@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    function playround(playerSelection, computerSelection){
+
+    if ((playerSelection === "paper" && computerSelection === "rock") ||
+      (playerSelection === "rock" && computerSelection === "scissors") ||
+      (playerSelection === "scissors" && computerSelection === "paper")){
+      return "Won"
+    }else if (playerSelection === computerSelection){
+      return "Tie"
+    }else {
+      return "Lost"
+    }
+    }
+    function game(){
+      let points = 0
+      for (var i = 0; i < 5 ; i++){
+        const playerSelection = prompt("Rock, paper or scissors?").toLowerCase()
+        const computerSelection = three[Math.floor(Math.random() * three.length)]
+        console.log(playerSelection)
+        console.log(computerSelection)
+
+        let result = playround(playerSelection, computerSelection)
+        if (result === "Won"){
+          points += 1
+          let message = `${result} ${points}/5`
+          console.log(message)
+        }else{
+          let message = `${result} ${points}/5`
+          console.log(message)
+        }
+      }
+      if (points >= 3){
+        console.log("Game over, you won")
+      }else{
+        console.log("Game over, you lost")
+      }
+    }
+
+    const three = ['rock','paper','scissors']
+    game()
+
+  </script>
+</html>
