@@ -1,5 +1,9 @@
+html{
+  background: url(geometry2.png) center center fixed;
+}
 body{
-  text-align: center
+  text-align: center;
+  font-family: sans-serif;
 }
 .space{
   display: flex;
@@ -9,16 +13,19 @@ body{
 }
 
 .box {
-  border: 1px solid black;
+  border: 1px solid white;
+  border-radius: 6px;
   width: 80px;
+  line-height: 40px;
   margin: 10px;
-  background-color: grey;
+  background-color: #6599ed;
   text-align: center;
-  color: white
+  color: white;
+  transition: .40s;
 }
 
 .selection{
-  border: 2px solid blue
+  background-color: yellow;
 }
 
 .show{
