@@ -1,0 +1,26 @@
+body{
+  text-align: center
+}
+.space{
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  border: 1px solid black;
+  width: 80px;
+  margin: 10px;
+  background-color: grey;
+  text-align: center;
+  color: white
+}
+
+.selection{
+  border: 2px solid blue
+}
+
+.show{
+  white-space: pre-line;
+}

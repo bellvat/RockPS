@@ -1,45 +1,73 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" href="game.css">
+  </head>
+  <body>
+    <h1>Rock, Paper, or Scissors? </br> Let's play!</h1>
+    <div class="space">
+      <div class="box" id="Rock">Rock</div>
+      <div class="box" id="Paper">Paper</div>
+      <div class="box" id="Scissors">Scissors</div>
+    </div>
+    <div class="show">
+
+    </div>
   <script>
     function playround(playerSelection, computerSelection){
+      if ((playerSelection === "Paper" && computerSelection === "Rock") ||
+        (playerSelection === "Rock" && computerSelection === "Scissors") ||
+        (playerSelection === "Scissors" && computerSelection === "Paper")){
+        return "Won"
+      }else if (playerSelection === computerSelection){
+        return "Tie"
+      }else {
+        return "Lost"
+      }
+    }
 
-    if ((playerSelection === "paper" && computerSelection === "rock") ||
-      (playerSelection === "rock" && computerSelection === "scissors") ||
-      (playerSelection === "scissors" && computerSelection === "paper")){
-      return "Won"
-    }else if (playerSelection === computerSelection){
-      return "Tie"
-    }else {
-      return "Lost"
-    }
-    }
     function game(){
       let points = 0
-      for (var i = 0; i < 5 ; i++){
-        const playerSelection = prompt("Rock, paper or scissors?").toLowerCase()
-        const computerSelection = three[Math.floor(Math.random() * three.length)]
-        console.log(playerSelection)
-        console.log(computerSelection)
+      let roundsPlayed = 0
+      const three = ['Rock','Paper','Scissors']
+      window.addEventListener('click', roundOne)
+      window.addEventListener('click', function(e){
+        e.target.classList.add('selection')
+      })
 
+      function roundOne(e){
+        const playerSelection = e.target.id
+        const computerSelection = three[Math.floor(Math.random() * three.length)]
         let result = playround(playerSelection, computerSelection)
+        roundsPlayed += 1
+        const show = document.querySelector('.show')
+
+
         if (result === "Won"){
           points += 1
-          let message = `${result} ${points}/5`
-          console.log(message)
-        }else{
-          let message = `${result} ${points}/5`
-          console.log(message)
+        }
+        show.textContent = `You: ${playerSelection} - Computer: ${computerSelection}\r\n`
+        show.textContent += `${result} ${points}/5 \r\n`
+
+        if (roundsPlayed === 5){
+          totalPoints(points)
         }
       }
-      if (points >= 3){
-        console.log("Game over, you won")
-      }else{
-        console.log("Game over, you lost")
+
+
+      function totalPoints(points){
+        const show = document.querySelector('.show')
+        if (points >= 3){
+          show.textContent += "Game over, you won!"
+        }else{
+          show.textContent += "Game over, you lost :("
+        }
       }
+
     }
 
-    const three = ['rock','paper','scissors']
     game()
 
   </script>
+  </body>
 </html>
